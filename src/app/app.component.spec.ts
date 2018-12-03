@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HomeModule } from 'src/app/home/home.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +8,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+       HomeModule
+      ]
     }).compileComponents();
   }));
 
@@ -19,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-unit-testing'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-unit-testing');
+    expect(app.title).toEqual('angular-unit-testing!');
   });
 
   it('should render title in a h1 tag', () => {
