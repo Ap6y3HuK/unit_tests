@@ -13,23 +13,23 @@ describe('AnyResource', () => {
 
     });
 
-    it('should fetched data after 2 sec', fakeAsync(() => {
+    it('should fetched data in 2 sec', fakeAsync(() => {
 
       anyResource.getDataWithStableDelay().subscribe((response) => {
         responseFromServer = response
-        expect(responseFromServer).toBe('Data fetched after 2 sec');
+        expect(responseFromServer).toBe('Data fetched in 2 sec');
       });
 
       tick(2000);
-      // expect(responseFromServer).toBe('Data fetched after 2 sec');
+      // expect(responseFromServer).toBe('Data fetched in 2 sec');
 
     }));
 
-    it('should fetched data after unknown time', (done) => {
+    it('should fetched data in unknown time', (done) => {
 
       anyResource.getDataWithRandomDelay().subscribe((response) => {
         responseFromServer = response;
-        expect(responseFromServer).toBe('Data fetched after unknown time');
+        expect(responseFromServer).toBe('Data fetched in unknown time');
         done();
       });
     });
@@ -37,7 +37,6 @@ describe('AnyResource', () => {
 
   describe('WITH TestBed', () => {
     let anyResource: AnyResource;
-    let testBed;
     beforeEach(() => {
       responseFromServer = undefined;
       anyResource = undefined;
@@ -51,7 +50,7 @@ describe('AnyResource', () => {
       anyResource = TestBed.get(AnyResource);
     });
 
-    it('should fetched data after 2 sec', fakeAsync(() => {
+    it('should fetched data in 2 sec', fakeAsync(() => {
       expect(anyResource).toBeDefined();
 
       anyResource.getDataWithStableDelay().subscribe((response) => {
@@ -59,14 +58,14 @@ describe('AnyResource', () => {
       });
 
       tick(2000);
-      expect(responseFromServer).toBe('Data fetched after 2 sec');
+      expect(responseFromServer).toBe('Data fetched in 2 sec');
     }));
 
-    it('should fetched data after unknown time', async(() => {
+    it('should fetched data in unknown time', async(() => {
 
       anyResource.getDataWithRandomDelay().subscribe((response) => {
         responseFromServer = response;
-        expect(responseFromServer).toBe('Data fetched after unknown time');
+        expect(responseFromServer).toBe('Data fetched in unknown time');
       });
     }));
 
